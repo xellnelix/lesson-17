@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tree implements SearchTree {
-	int value;
+	Integer value;
 	Tree left;
 	Tree right;
 
 	public void createNodes(List<Integer> list) {
+		if (list.size() == 0) {
+			System.out.println("Передан пустой список");
+			return;
+		}
 		value = list.get((list.size() - 1) / 2);
 		for (Integer element : list) {
-			if (element == value) {
+			if (element.equals(value)) {
 				continue;
 			}
 			if (element > value) {
@@ -28,6 +32,9 @@ public class Tree implements SearchTree {
 
 	@Override
 	public Integer find(int element) {
+		if (this.value == null) {
+			return null;
+		}
 		if (element == this.value) {
 			return this.value;
 		}
@@ -43,8 +50,13 @@ public class Tree implements SearchTree {
 	@Override
 	public List<Tree> getSortedList() {
 		List<Tree> tree = new ArrayList<>();
-		tree.add(this);
-		return tree;
+		if (this.value == null) {
+			System.out.println("Дерево пустое");
+			return null;
+		} else {
+			tree.add(this);
+			return tree;
+		}
 	}
 
 	@Override
