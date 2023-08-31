@@ -52,11 +52,10 @@ public class Tree implements SearchTree {
 		List<Tree> tree = new ArrayList<>();
 		if (this.value == null) {
 			System.out.println("Дерево пустое");
-			return null;
 		} else {
 			tree.add(this);
-			return tree;
 		}
+		return tree;
 	}
 
 	@Override
